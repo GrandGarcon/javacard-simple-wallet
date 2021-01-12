@@ -1,8 +1,7 @@
-# Simple Wallet
+# Simple Wallet - Edited version  , credits to the fitpay 
 
-This is a simple wallet simply maintains a running account balance allowing you to credit, debit, or review the current balance of the wallet.   This is simply for pure demonstration on various wearable technologies where a javacard secure element is available.
+i  took this template for another project  in course that i developed for making an  distributed POS on  java card   to manage virtual currencies , while testing for  cryptanalysis  
 
-A very simple [wallet client](src/main/java/fitpay/javacard/simplewallet/SimpleWalletClient.java) has been created to show a simple interaction with the wallet.
 
 ## Installation
 
@@ -10,45 +9,19 @@ A very simple [wallet client](src/main/java/fitpay/javacard/simplewallet/SimpleW
 
 ## Information
 
-Applet AID
-```
-F000A0000E00
-```
+ Understanding the ADPU and fetching certain protocols like Applet AID
+
+Try to fiddle with the diffrent formats present in the EMVco standards of the present smart contracts .  some of the ideas i would like to be implemented in the future is the : 
+
+1. implementation of the wireshark kind of protocol dissector on the  javacard ecosystems , specially in the future  standards . and then explain the diffrent scenarios of the changes 
+
+WIP:
 
 ## Usage
 
-Before any operation, the applet must be selected throught the following APDU command:
-```
-00A4040006F000A0000E0000
-```
-
 ### Get Balance
-Request APDU
-```
-B050000002
-```
-* If 0x9000 successful response, the balance is returned in response data.
 
 
 ### Increment Balance
-```
-B040000001[AMOUNT, 1 Bytes]
-```
-* Note: The wallet is not currently implemented to protect against a max balance of 32767.
-
-Sample, increase balance by 5:
-```
-B04000000105
-```
 
 ### Decrease Balance
-```
-B030000001[AMOUNT, 1 Bytes]
-```
-* If 0x9000 successful response, the balance has been reduced by the specified amount.
-* If 0xFF85 failed response, the current balance is not enough for the specified amount.
-
-Sample, decrease balance by 5:
-```
-B03000000105
-```
